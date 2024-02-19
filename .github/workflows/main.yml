@@ -14,14 +14,10 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Configure CMake
-        run: cmake .
-
-      - name: Build
-        run: cmake --build .
-
       - name: Install dependencies
-        run: cmake --build . --target install
+        run: |
+          pip install -r requirements.txt
 
       - name: Run tests
-        run: cmake --build . --target test
+        run: |
+          pytest test.py
